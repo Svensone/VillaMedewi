@@ -186,25 +186,29 @@
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
         }
 
         .gallery-item {
             overflow: hidden;
             border-radius: 8px;
-            height: 250px;
+            height: 500px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.3s ease;
         }
 
         .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.2);
         }
 
         /* Contact Section */
@@ -268,8 +272,53 @@
             font-size: 0.9rem;
         }
 
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+            margin-left: auto;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 2px solid transparent;
+            padding: 4px 8px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lang-btn img {
+            width: 24px;
+            height: 16px;
+            border-radius: 2px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover img {
+            transform: scale(1.1);
+        }
+
+        .lang-btn.active {
+            border-color: #333;
+        }
+
+        .lang-btn.active img {
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .language-switcher {
+                margin-left: 0;
+                margin-top: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
             .hero-content h1 {
                 font-size: 2rem;
             }
@@ -292,12 +341,22 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="logo">Villa Medewi</div>
-        <div>
-            <a href="#about">About</a>
-            <a href="#features">Features</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#contact">Contact</a>
+        <div class="logo" data-en="Villa Medewi" data-id="Villa Medewi">Villa Medewi</div>
+        <div style="display: flex; align-items: center; flex: 1;">
+            <div>
+                <a href="#about" data-en="About" data-id="Tentang">About</a>
+                <a href="#features" data-en="Features" data-id="Fitur">Features</a>
+                <a href="#gallery" data-en="Gallery" data-id="Galeri">Gallery</a>
+                <a href="#contact" data-en="Contact" data-id="Kontak">Contact</a>
+            </div>
+            <div class="language-switcher">
+                <button class="lang-btn active" id="lang-en" title="English">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'%3E%3Crect fill='%23012169' width='60' height='40'/%3E%3Cpath fill='white' d='M0 0L60 40M60 0L0 40'/%3E%3Cpath fill='white' d='M30 0v40M0 20h60'/%3E%3Cpath fill='%23C8102E' d='M30 0v40M0 20h60'/%3E%3C/svg%3E" alt="English" class="flag-icon">
+                </button>
+                <button class="lang-btn" id="lang-id" title="Bahasa Indonesia">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'%3E%3Crect fill='%23FF0000' y='0' width='60' height='20'/%3E%3Crect fill='white' y='20' width='60' height='20'/%3E%3C/svg%3E" alt="Indonesia" class="flag-icon">
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -310,16 +369,17 @@
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Villa Medewi</h1>
-            <p>Your Dream Getaway Awaits</p>
+            <h1 data-en="Villa Medewi" data-id="Villa Medewi">Villa Medewi</h1>
+            <p data-en="Your Dream Getaway Awaits" data-id="Liburan Impian Anda Menanti">Your Dream Getaway Awaits</p>
         </div>
     </section>
 
     <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
-            <h2>Welcome</h2>
-            <p>Experience tranquility nestled in a serene location, our villa offers the perfect escape from the hustle and bustle of everyday life.
+            <h2 data-en="Welcome" data-id="Selamat Datang">Welcome</h2>
+            <p data-en="Experience tranquility nestled in a serene location, 
+            our villa offers the perfect escape from the hustle and bustle of everyday life. 3x bedroom villa with 96 m2 (plus balcony), total land size 300 m2" data-id="Rasakan ketenangan di lokasi yang teduh, villa kami menawarkan pelarian sempurna dari kesibukan kehidupan sehari-hari. 3x kamar tidur rumah dgn luas 96m2. Tanah total 300 m2">Experience tranquility nestled in a serene location, our villa offers the perfect escape from the hustle and bustle of everyday life.
             </p>
         </div>
     </section>
@@ -327,25 +387,25 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
-            <h2>What We Offer</h2>
+            <h2 data-en="What We Offer" data-id="Apa Yang Kami Tawarkan">What We Offer</h2>
             <div class="feature-grid">
                 <div class="feature-item">
-                    <h3>🏊 Quiet Place</h3>
-                    <p>no noise from the main road with panoramic views - 1km from the beach.</p>
+                    <h3 data-en="🏊 Quiet Place" data-id="🏊 Tempat Tenang">🏊 Quiet Place</h3>
+                    <p data-en="no noise from the main road with panoramic views - 1km from the beach. 300 m2, Villa 96m2" data-id="tidak ada kebisingan dari jalan utama dengan pemandangan panorama - 1km dari pantai.">no noise from the main road with panoramic views - 1km from the beach.</p>
                 </div>
                 
                 <div class="feature-item">
-                    <h3>🛏️ Long Term Rental</h3>
-                    <p>1 year, 5 year or 20 years possible</p>
+                    <h3 data-en="🛏️ Long Term Rental" data-id="🛏️ Sewa Jangka Panjang">🛏️ Long Term Rental</h3>
+                    <p data-en="1 year, 5 year or 20 years possible" data-id="1 tahun, 5 tahun atau 20 tahun dimungkinkan">1 year, 5 year or 20 years possible</p>
                 </div>
                 <div class="feature-item">
-                    <h3>🌅 Scenic Views</h3>
-                    <p>Stunning vistas from every corner of our property.</p>
+                    <h3 data-en="🌅 Scenic Views" data-id="🌅 Pemandangan Indah">🌅 Scenic Views</h3>
+                    <p data-en="Stunning vistas from every corner of our property." data-id="Pemandangan menakjubkan dari setiap sudut properti kami.">Stunning vistas from every corner of our property.</p>
                 </div>
                 
                 <div class="feature-item">
-                    <h3>🚗 Parking</h3>
-                    <p>Secure parking available for your vehicles.</p>
+                    <h3 data-en="🚗 Parking" data-id="🚗 Parkir">🚗 Parking</h3>
+                    <p data-en="Secure parking available for your vehicles." data-id="Parkir aman tersedia untuk kendaraan Anda.">Secure parking available for your vehicles.</p>
                 </div>
             </div>
         </div>
@@ -353,7 +413,7 @@
 
     <!-- Gallery Section -->
     <section class="gallery" id="gallery">
-        <h2>Gallery</h2>
+        <h2 data-en="Gallery" data-id="Galeri">Gallery</h2>
         <div class="gallery-grid">
             <div class="gallery-item">
                 <img src="assets/Front.jpg" alt="Villa exterior">
@@ -397,15 +457,15 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2>Get In Touch</h2>
+            <h2 data-en="Get In Touch" data-id="Hubungi Kami">Get In Touch</h2>
             <div class="contact-info">
                 <div class="contact-card">
-                    <h3>Phone / WhatsApp</h3>
+                    <h3 data-en="Phone / WhatsApp" data-id="Telepon / WhatsApp">Phone / WhatsApp</h3>
                     <p><a>+62 82342418319</a></p>
                 </div>
                 <div class="contact-card">
-                    <h3>Owner Name</h3>
-                    <p>Pak Samsul</p>
+                    <h3 data-en="Owner Name" data-id="Nama Pemilik">Owner Name</h3>
+                    <p data-en="Pak Samsul" data-id="Pak Samsul">Pak Samsul</p>
                 </div>
                 <!-- <div class="contact-card">
                     <h3>Email</h3>
@@ -417,7 +477,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Villa Medewi. All rights reserved.</p>
+        <p data-en="&copy; 2024 Villa Medewi. All rights reserved." data-id="&copy; 2024 Villa Medewi. Semua hak dilindungi.">&copy; 2024 Villa Medewi. All rights reserved.</p>
     </footer>
 
     <script>
@@ -432,6 +492,44 @@
         }
 
         setInterval(rotateHeroImages, 5000);
+
+        // Language Switcher
+        const langBtnEn = document.getElementById('lang-en');
+        const langBtnId = document.getElementById('lang-id');
+        let currentLang = localStorage.getItem('lang') || 'en';
+
+        // Initialize language on page load
+        window.addEventListener('load', () => {
+            applyLanguage(currentLang);
+        });
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+
+            // Update active button
+            if (lang === 'en') {
+                langBtnEn.classList.add('active');
+                langBtnId.classList.remove('active');
+            } else {
+                langBtnId.classList.add('active');
+                langBtnEn.classList.remove('active');
+            }
+
+            // Update all translatable elements
+            document.querySelectorAll('[data-en][data-id]').forEach(element => {
+                const text = lang === 'en' ? element.getAttribute('data-en') : element.getAttribute('data-id');
+                element.textContent = text;
+            });
+        }
+
+        langBtnEn.addEventListener('click', () => {
+            applyLanguage('en');
+        });
+
+        langBtnId.addEventListener('click', () => {
+            applyLanguage('id');
+        });
     </script>
 </body>
 </html>
